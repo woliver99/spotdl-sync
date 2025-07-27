@@ -18,7 +18,6 @@ fi
 SYNC_DIRECTORY=${SYNC_DIRECTORY:-/music}
 SYNC_INTERVAL_SECONDS=${SYNC_INTERVAL_SECONDS:-3600}
 
-# Ensure the target directory exists before trying to cd into it
 mkdir -p "$SYNC_DIRECTORY"
 cd "$SYNC_DIRECTORY"
 
@@ -27,13 +26,10 @@ echo "-> Syncing inside directory: $(pwd)"
 echo "-> Sync Interval: $SYNC_INTERVAL_SECONDS seconds"
 echo "----------------------------------------"
 
-# Loop indefinitely to run sync periodically
 while true; do
   echo "[$(date)] Starting sync for playlist: $PLAYLIST_URL"
 
-  # Run the spotdl command. Since we are already in the target directory,
-  # we can just use "." to specify the current directory.
-  spotdl sync "$PLAYLIST_URL" --save-file sync.spotdl --client-id "$SPOTIFY_CLIENT_ID" --client-secret "$SPOTIFY_CLIENT_SECRET"
+  spotdl sync "$PLAYLIST_URL" --save-file /root/.spotdl/sync.spotdl --use-cache-file --client-id "$SPOTIFY_CLIENT_ID" --client-secret "$SPOTIFY_CLIENT_SECRET"
 
   echo "[$(date)] Sync complete. Sleeping for $SYNC_INTERVAL_SECONDS seconds..."
   sleep "$SYNC_INTERVAL_SECONDS"

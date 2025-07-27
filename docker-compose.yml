@@ -12,3 +12,4 @@ services:
       - SPOTIFY_CLIENT_SECRET=YOUR_CLIENT_SECRET_HERE
     volumes:
       - ./my-synced-music:/music
+      - ./my-synced-music/.spotdl:/root/.spotdl
