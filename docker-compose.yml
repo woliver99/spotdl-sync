@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  spotdl-sync:
+    # Build the image from the Dockerfile in the current directory
+    build: .
+    # Name the container for easy identification
+    container_name: spotdl-sync
+    # Use an .env file to load environment variables for secrets
+    environment:
+      - PLAYLIST_URL=YOUR_PLAYLIST_URL_HERE
+      - SYNC_INTERVAL_SECONDS=3600
+      - SYNC_DIRECTORY=/music
+
+      - SPOTIFY_CLIENT_ID=YOUR_CLIENT_ID_HERE
+      - SPOTIFY_CLIENT_SECRET=YOUR_CLIENT_SECRET_HERE
+    volumes:
+      # Map a local directory to the /music directory inside the container.
+      # CHANGE './my-synced-music' to the path where you want to store your music.
+      - ./my-synced-music:/music
+    # Automatically restart the container if it stops
+    restart: always
