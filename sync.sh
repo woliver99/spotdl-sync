@@ -33,9 +33,7 @@ while true; do
 
   # Run the spotdl command. Since we are already in the target directory,
   # we can just use "." to specify the current directory.
-  spotdl --client-id "$SPOTIFY_CLIENT_ID" \
-         --client-secret "$SPOTIFY_CLIENT_SECRET" \
-         sync "$PLAYLIST_URL" .
+  spotdl sync "$PLAYLIST_URL" --save-file sync.spotdl --client-id "$SPOTIFY_CLIENT_ID" --client-secret "$SPOTIFY_CLIENT_SECRET"
 
   echo "[$(date)] Sync complete. Sleeping for $SYNC_INTERVAL_SECONDS seconds..."
   sleep "$SYNC_INTERVAL_SECONDS"

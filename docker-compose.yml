@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   spotdl-sync:
     image: ghcr.io/woliver99/spotdl-sync:main
