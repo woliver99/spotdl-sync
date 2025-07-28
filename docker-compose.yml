@@ -5,7 +5,7 @@ services:
     restart: always
     environment:
       - PLAYLIST_URL=YOUR_PLAYLIST_URL_HERE
-      - SYNC_INTERVAL_SECONDS=3600
+      - SYNC_INTERVAL_SECONDS=10800
       - SYNC_DIRECTORY=/music
 
       - SPOTIFY_CLIENT_ID=YOUR_CLIENT_ID_HERE
